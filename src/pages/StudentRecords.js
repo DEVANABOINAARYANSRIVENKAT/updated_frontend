@@ -11,7 +11,7 @@ export default function StudentRds() {
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:5000/api/auth/StudentRecords`, studentrecords).then(res => { alert(res.data);navigate('/studentdash')  }).catch(err => alert(err.response.data));
+        axios.post(`http://3.110.44.29:5000/api/auth/StudentRecords`, studentrecords).then(res => { alert(res.data);navigate('/studentdash')  }).catch(err => alert(err.response.data));
     }
     return (
         <div>

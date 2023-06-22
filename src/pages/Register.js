@@ -11,7 +11,7 @@ export default function Register() {
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:5000/api/auth/register`, register).then(res => { alert(res.data); navigate('/login') }).catch(err => alert(err.response.data));
+        axios.post(`http://3.110.44.29:5000/api/auth/register`, register).then(res => { alert(res.data); navigate('/login') }).catch(err => alert(err.response.data));
     }
     return (
         <div>

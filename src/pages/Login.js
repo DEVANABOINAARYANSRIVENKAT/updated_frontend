@@ -10,7 +10,7 @@ export default function Login() {
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/auth/login', login).then(res => { localStorage.setItem('token', res.data.token); navigate('/home') }).catch(err => alert(err.response.data));
+        axios.post('http://3.110.44.29:5000/api/auth/login', login).then(res => { localStorage.setItem('token', res.data.token); navigate('/home') }).catch(err => alert(err.response.data));
     }
     return (   
         <div className='loginpage'>
