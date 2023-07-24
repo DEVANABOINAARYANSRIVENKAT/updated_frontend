@@ -20,16 +20,14 @@ export default function Help() {
             <p>3: Admin</p>
             <p>4: About</p>
             <p>5: Help</p>
-            <p>6: Logout</p>
-            <p>7: website</p>
+            <p>6: Logout</p>            
         </div>
         <p>***Click on <u>Faculty</u> to  add/view/delete  Student Records/Class Schedules.</p>
         <p>***Click on <u>Student</u> to view Student Records/Class Schedules.<br/>  </p>
         <p>***Click on <u>Admin</u> to login to the Admin.</p>
         <p>***Click on <u>About</u> to know about the website.</p>
         <p>***Click on <u>Help</u> to get help to use the website.</p>
-        <p>***Click on <u>Logout</u> to logout from the session.</p>
-        <p>***Click on <u>Website</u> to navigate to the 1st page of this website </p> </b>
+        <p>***Click on <u>Logout</u> to logout from the session.</p></b>
         </div>
     </div>
   )

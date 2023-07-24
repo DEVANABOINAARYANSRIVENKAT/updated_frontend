@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
 export default function Login() {
     const navigate = useNavigate();
     const [login, setlogin] = useState({ username: '', password: '' });
@@ -10,7 +9,7 @@ export default function Login() {
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://3.110.44.29:5000/api/auth/login', login).then(res => { localStorage.setItem('token', res.data.token); navigate('/home') }).catch(err => alert(err.response.data));
+        axios.post('http://localhost:5000/api/auth/login', login).then(res => { localStorage.setItem('token', res.data.token); navigate('/home') }).catch(err => alert(err.response.data));
     }
     return (   
         <div className='loginpage'>
@@ -24,10 +23,10 @@ export default function Login() {
                 <h2 className="loghead">Sign-In</h2>
                 <form onSubmit={submitHandler} className="loginform">
                     <label htmlFor="email">Username: <br />
-                        <input type="text" placeholder='name' name='username' onChange={changeHandler} required autoComplete='off' />
+                        <input type="text" placeholder='enter your username' name='username' onChange={changeHandler} required autoComplete='off' />
                     </label>
                     <label htmlFor="password">Password: <br />
-                        <input type="password" placeholder='Password@123' name='password' onChange={changeHandler} required />
+                        <input type="password" placeholder='enter your password' name='password' onChange={changeHandler} required />
                     </label>
                         <input className='logmainbtn' type="submit" value="Login" />
                 </form>

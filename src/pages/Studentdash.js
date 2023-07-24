@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 export default function Studentdash() {
     const [srdata, setsrdata] = useState([]);
     const deleteHandler = (id) => {
-        axios.delete(`http://3.110.44.29:5000/api/srdata/${id}`).then(res => window.location.reload(false));
+        axios.delete(`http://localhost:5000/api/srdata/${id}`).then(res => window.location.reload(false));
     }
     useEffect(() => {
-        axios.get('http://3.110.44.29:5000/api/srdata').then(res => setsrdata(res.data));
+        axios.get('http://localhost:5000/api/srdata').then(res => setsrdata(res.data));
     }, [])
   return (
     <div>

@@ -10,8 +10,29 @@ export default function ClassSchedules() {
         setclassschedules({ ...classschedules, [e.target.name]: e.target.value });
     }
     const submitHandler = (e) => {
+        const course=document.getElementById("course").value
+        const courseCheck=/^[a-zA-Z ]+$/
+        const instructor=document.getElementById("instructor").value
+        const instructorCheck=/^[a-zA-Z ]+$/
+        if(course.length<2){
+            alert("course name must be of 2 characters... ")
+            return false
+        }
+        if(!course.match(courseCheck)){
+            alert("course name is invalid!!  --> please enter valid course name")
+            return false
+        }
+        if(instructor.length<3){
+            alert("please enter full name of instructor ")
+            return false
+        }
+        if(!instructor.match(instructorCheck)){
+            alert("instructor name is invalid!!  --> please enter valid instructor name")
+            return false
+        }
+        
         e.preventDefault();
-        axios.post(`http://3.110.44.29:5000/api/auth/ClassSchedules`, classschedules).then(res => { alert(res.data);navigate('/classdash')  }).catch(err => alert(err.response.data));
+        axios.post(`http://localhost:5000/api/auth/ClassSchedules`, classschedules).then(res => { alert(res.data);navigate('/classdash')  }).catch(err => alert(err.response.data));
     }
     return (
         <div>
@@ -24,13 +45,13 @@ export default function ClassSchedules() {
             <div className='ClassRecords'>      
             <form className="csform" onSubmit={submitHandler}>                
                 <label htmlFor="name"><b>Course: </b>
-                    <input type="text" placeholder='ex: ML' name='course' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='ex: ML' name='course' id='course' onChange={changeHandler} autoComplete='off' required />
                 </label><br />
                 <label htmlFor="name"><b>Instructor: </b>
-                    <input type="text" placeholder='lecturer name' name='instructor' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='lecturer name' name='instructor' id='instructor' onChange={changeHandler} autoComplete='off' required />
                 </label><br />
                 <label htmlFor="name"><b>Time: </b>
-                    <input type="text" placeholder='9.am to 10.am ' name='time' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='9.am to 10.am ' name='time' id='time' onChange={changeHandler} autoComplete='off' required />
                 </label><br />
                 <input className='Sdatabtn' type="submit" value="Submit" />
             </form>

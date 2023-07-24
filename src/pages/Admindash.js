@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 export default function Admindash() {
     const [users, setusers] = useState([]);
     const deleteHandler = (id) => {
-        axios.delete(`http://3.110.44.29:5000/api/user/${id}`).then(res => window.location.reload(false));
+        axios.delete(`http://localhost:5000/api/user/${id}`).then(res => window.location.reload(false));
     }
     useEffect(() => {
-        axios.get('http://3.110.44.29:5000/api/user').then(res => setusers(res.data));
+        axios.get('http://localhost:5000/api/user').then(res => setusers(res.data));
     }, [])
   return (
     <div>

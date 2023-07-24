@@ -10,8 +10,81 @@ export default function StudentRds() {
         setstudentrecords({ ...studentrecords, [e.target.name]: e.target.value });
     }
     const submitHandler = (e) => {
+        const name=document.getElementById("fullname").value
+        const nameCheck=/^[a-zA-Z ]+$/
+        const rollno=document.getElementById("rollno").value
+        const rollnoCheck=/^[a-zA-Z0-9 ]+$/
+        const emailId=document.getElementById("emailid").value
+        const emailIdCheck=/^[a-z0-9.]+@[a-z0-9]+\.[a-z]{2,3}$/
+        const course=document.getElementById("course").value
+        const courseCheck=/^[a-zA-Z. ]+$/
+        const year=document.getElementById("year").value
+        const yearCheck=/^[a-zA-Z0-9 ]+$/
+        const branch=document.getElementById("branch").value
+        const branchCheck=/^[a-zA-Z ]+$/
+        const gender=document.getElementById("gender").value
+        const genderCheck=/^[a-zA-Z ]+$/
+        const mobileno=document.getElementById("mobileno").value
+        const mobilenoCheck=/^[0-9 ]+$/
+        if(name.length<3){
+            alert("please enter your full name")
+            return false
+        }
+        if(!name.match(nameCheck)){
+            alert("Name is invalid!!  --> please enter valid name")
+            return false
+        }
+        if(rollno.length!=10){
+            alert("Rollno must be of 10 characters...")
+            return false
+        }
+        if(!rollno.match(rollnoCheck)){
+            alert("Rollno is invalid!!  --> please enter valid rollno")
+            return false
+        }
+        if(!emailId.match(emailIdCheck)){
+            alert("emailId is invalid!!  --> please enter valid emailId")
+            return false
+        }
+        if(course.length<3){
+            alert("please enter your exact course name")
+            return false
+        }
+        if(!course.match(courseCheck)){
+            alert("course name is invalid!!  --> please enter valid course name")
+            return false
+        }
+        if(!year.match(yearCheck)){
+            alert("year is invalid!!  --> please enter valid year")
+            return false
+        }
+        if(branch.length<3){
+            alert("please enter your branch name")
+            return false
+        }
+        if(!branch.match(branchCheck)){
+            alert("branch name is invalid!!  --> please enter valid branch name")
+            return false
+        }
+        if(gender.length<3){
+            alert("please enter your branch name")
+            return false
+        }
+        if(!gender.match(genderCheck)){
+            alert("branch name is invalid!!  --> please enter valid gender")
+            return false
+        }
+        if(mobileno.length!=10){
+            alert("mobileno must be of 10 numbers...")
+            return false
+        }
+        if(!mobileno.match(mobilenoCheck)){
+            alert("mobileno is invalid!!  --> please enter valid mobileno")
+            return false
+        }        
+
         e.preventDefault();
-        axios.post(`http://3.110.44.29:5000/api/auth/StudentRecords`, studentrecords).then(res => { alert(res.data);navigate('/studentdash')  }).catch(err => alert(err.response.data));
+        axios.post(`http://localhost:5000/api/auth/StudentRecords`, studentrecords).then(res => { alert(res.data);navigate('/studentdash')  }).catch(err => alert(err.response.data));
     }
     return (
         <div>
@@ -26,28 +99,28 @@ export default function StudentRds() {
             <form className="srform" onSubmit={submitHandler}>
                 
                 <label htmlFor="name"><b>Name:</b>
-                    <input type="text" placeholder='fullname' name='name' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='fullname' name='name' id='fullname' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>RollNo:</b> 
-                    <input type="text" placeholder='208T1A0527' name='rollno' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='208T1A0527' name='rollno' id='rollno' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>Emailid:</b>
-                    <input type="text" placeholder='example@gmail.com' name='emailid' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='example@gmail.com' name='emailid' id='emailid' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>Course:</b>
-                    <input type="text" placeholder='B.Tech/degree' name='course' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='B.Tech/degree' name='course' id='course' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>Year:</b>
-                    <input type="text" placeholder='ex: 3rd year' name='year' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='ex: 3rd year' name='year' id='year' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>Branch:</b>
-                    <input type="text" placeholder='ex:CSE' name='branch' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='ex:CSE' name='branch' id='branch' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>Gender:</b>
-                    <input type="text" placeholder='male/female' name='gender' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='male/female' name='gender' id='gender' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <label htmlFor="name"><b>Mobileno:</b>
-                    <input type="text" placeholder='1234567890' name='mobileno' onChange={changeHandler} autoComplete='off' required />
+                    <input type="text" placeholder='1234567890' name='mobileno' id='mobileno' onChange={changeHandler} autoComplete='off' required />
                 </label><br/>
                 <input className='Sdatabtn' type="submit" value="Submit Student Record" />
             </form>
